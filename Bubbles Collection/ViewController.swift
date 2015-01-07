@@ -60,7 +60,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("-- tapped indexPath \(indexPath.item)")
+        count--
+        self.collectionView.deleteItemsAtIndexPaths([indexPath])
     }
 
 }
