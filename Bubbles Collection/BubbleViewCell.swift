@@ -31,7 +31,10 @@ class BubbleViewCell: UICollectionViewCell {
     }
     
     private func setupView() {
-        self.backgroundColor = UIColor.greenColor()
+        let contentView = BubbleContentView(frame: self.bounds)
+        contentView.backgroundColor = UIColor.greenColor()
+        contentView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+        self.contentView.addSubview(contentView)
     }
     
     // MARK: - Animation
@@ -44,14 +47,6 @@ class BubbleViewCell: UICollectionViewCell {
                 self.transform = CGAffineTransformIdentity
             }
         }, completion: nil)
-    }
-    
-    // MARK: - Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.layer.cornerRadius = self.frame.size.width / 2.0
     }
 
 }

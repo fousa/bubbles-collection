@@ -16,7 +16,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: Private
     
-    private var count: Int = 5
+    private var count: Int = 3
     
     // MARK: - Initialization
     
@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as BubbleViewCell
         return cell
     }
     

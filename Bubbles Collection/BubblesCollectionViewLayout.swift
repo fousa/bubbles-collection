@@ -68,6 +68,10 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
         insertIndexPaths = [NSIndexPath]()
     }
     
+    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return true
+    }
+    
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
@@ -105,6 +109,10 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
         }
         
         return attributes
+    }
+    
+    override func layoutSublayersOfLayer(layer: CALayer!) {
+        super.layoutSublayersOfLayer(layer)
     }
     
     override func finalLayoutAttributesForDisappearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
