@@ -9,6 +9,7 @@
 import UIKit
 
 let BubblesCollectionViewLayoutBubbleAddSize: CGFloat = 60.0
+let BubblesCollectionViewLayoutBubblePadding: CGFloat = 20.0
 let BubblesCollectionViewLayoutBubbleAddKind = "Add"
 
 class BubblesCollectionViewLayout: UICollectionViewLayout {
@@ -86,7 +87,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
         var attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
         
         attributes.size = CGSizeMake(BubblesCollectionViewLayoutBubbleAddSize, BubblesCollectionViewLayoutBubbleAddSize)
-        attributes.center = center
+        attributes.center = calculateSupplementaryViewCenter()
         
         return attributes
     }
@@ -122,6 +123,17 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     }
     
     // MARK: - Calculations
+    
+    private func calculateSupplementaryViewCenter() -> CGPoint {
+        if count > 3 {
+            return center
+        } else {
+            let collectionViewSize = self.collectionView?.frame.size ?? CGSizeZero
+            let x = collectionViewSize.width - BubblesCollectionViewLayoutBubbleAddSize - BubblesCollectionViewLayoutBubblePadding
+            let y = collectionViewSize.width - BubblesCollectionViewLayoutBubbleAddSize - BubblesCollectionViewLayoutBubblePadding
+            return CGPointMake(x, y)
+        }
+    }
     
     private func calculateItemCenter(#indexPath: NSIndexPath) -> CGPoint {
         let xRatio = cosf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
