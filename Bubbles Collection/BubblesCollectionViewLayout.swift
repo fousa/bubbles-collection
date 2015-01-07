@@ -101,7 +101,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
             }
             attributes?.alpha = 1.0
             attributes?.transform = CGAffineTransformMakeScale(0.001, 0.001)
-            attributes?.center = center
+            attributes?.center = calculateSupplementaryViewCenter()
         }
         
         return attributes
@@ -116,7 +116,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
             }
             attributes?.alpha = 1.0
             attributes?.transform = CGAffineTransformMakeScale(0.001, 0.001)
-            attributes?.center = center
+            attributes?.center = calculateSupplementaryViewCenter()
         }
 
         return attributes
@@ -125,7 +125,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     // MARK: - Calculations
     
     private func calculateSupplementaryViewCenter() -> CGPoint {
-        if count > 3 {
+        if count == 0 || count > 3 {
             return center
         } else {
             let collectionViewSize = self.collectionView?.frame.size ?? CGSizeZero
@@ -136,16 +136,34 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     }
     
     private func calculateItemCenter(#indexPath: NSIndexPath) -> CGPoint {
-        let xRatio = cosf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
-        let x = CGFloat(center.x) + radius * CGFloat(xRatio)
-        let yRatio = sinf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
-        let y = CGFloat(center.y) + radius * CGFloat(yRatio)
-        return CGPointMake(x, y)
+        if count > 3 {
+            let xRatio = cosf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
+            let x = CGFloat(center.x) + radius * CGFloat(xRatio)
+            let yRatio = sinf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
+            let y = CGFloat(center.y) + radius * CGFloat(yRatio)
+            return CGPointMake(x, y)
+        } else {
+            var x = center.x
+            var y = center.y
+            var ratio: CGFloat = count == 2 ? 2.0 : 1.0
+            if indexPath.item == 0 && count == 2 {
+                x += calculateItemSize().width / ratio
+                y -= calculateItemSize().height / ratio
+            } else if indexPath.item == 1 {
+                x -= calculateItemSize().width / ratio
+                y += calculateItemSize().height / ratio
+            } else if indexPath.item == 2 {
+                x += calculateItemSize().width / ratio
+                y -= calculateItemSize().height / ratio
+            }
+            return CGPointMake(x, y)
+        }
     }
     
     private func calculateItemSize() -> CGSize {
         let collectionViewSize = self.collectionView?.frame.size ?? CGSizeZero
-        let size =  CGFloat(collectionViewSize.width / 4.0)
+        let ratio: CGFloat = count < 3 ? 3.5 : 4.0
+        let size =  CGFloat(collectionViewSize.width / ratio)
         return CGSizeMake(size, size)
     }
     

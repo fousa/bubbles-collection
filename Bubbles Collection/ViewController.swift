@@ -30,6 +30,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         
         collectionView.registerClass(BubbleAddReusableView.classForCoder(), forSupplementaryViewOfKind: BubblesCollectionViewLayoutBubbleAddKind, withReuseIdentifier: "Add")
+        collectionView.registerClass(BubbleViewCell.classForCoder(), forCellWithReuseIdentifier: "Cell")
     }
     
     // MARK: - BubbleAddReusableViewDelegate
@@ -49,7 +50,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as UICollectionViewCell
-        cell.layer.cornerRadius = cell.frame.size.width / 2.0
         return cell
     }
     
