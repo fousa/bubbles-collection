@@ -12,20 +12,9 @@
 		6277643D1A5D1EBA004A9732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6277643B1A5D1EBA004A9732 /* Main.storyboard */; };
 		6277643F1A5D1EBA004A9732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6277643E1A5D1EBA004A9732 /* Images.xcassets */; };
 		627764421A5D1EBA004A9732 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 627764401A5D1EBA004A9732 /* LaunchScreen.xib */; };
-		6277644E1A5D1EBA004A9732 /* Bubbles_CollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6277644D1A5D1EBA004A9732 /* Bubbles_CollectionTests.swift */; };
 		627764581A5D2608004A9732 /* BubblesCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627764571A5D2608004A9732 /* BubblesCollectionViewLayout.swift */; };
 		6277645A1A5D3686004A9732 /* BubbleAddReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627764591A5D3686004A9732 /* BubbleAddReusableView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		627764481A5D1EBA004A9732 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6277642A1A5D1EBA004A9732 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 627764311A5D1EBA004A9732;
-			remoteInfo = "Bubbles Collection";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		627764321A5D1EBA004A9732 /* Bubbles Collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bubbles Collection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,22 +24,12 @@
 		6277643C1A5D1EBA004A9732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6277643E1A5D1EBA004A9732 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		627764411A5D1EBA004A9732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		627764471A5D1EBA004A9732 /* Bubbles CollectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bubbles CollectionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6277644C1A5D1EBA004A9732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6277644D1A5D1EBA004A9732 /* Bubbles_CollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubbles_CollectionTests.swift; sourceTree = "<group>"; };
 		627764571A5D2608004A9732 /* BubblesCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesCollectionViewLayout.swift; sourceTree = "<group>"; };
 		627764591A5D3686004A9732 /* BubbleAddReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleAddReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6277642F1A5D1EBA004A9732 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		627764441A5D1EBA004A9732 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				627764341A5D1EBA004A9732 /* Bubbles Collection */,
-				6277644A1A5D1EBA004A9732 /* Bubbles CollectionTests */,
 				627764331A5D1EBA004A9732 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				627764321A5D1EBA004A9732 /* Bubbles Collection.app */,
-				627764471A5D1EBA004A9732 /* Bubbles CollectionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,23 +78,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6277644A1A5D1EBA004A9732 /* Bubbles CollectionTests */ = {
-			isa = PBXGroup;
-			children = (
-				6277644D1A5D1EBA004A9732 /* Bubbles_CollectionTests.swift */,
-				6277644B1A5D1EBA004A9732 /* Supporting Files */,
-			);
-			path = "Bubbles CollectionTests";
-			sourceTree = "<group>";
-		};
-		6277644B1A5D1EBA004A9732 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6277644C1A5D1EBA004A9732 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,24 +98,6 @@
 			productReference = 627764321A5D1EBA004A9732 /* Bubbles Collection.app */;
 			productType = "com.apple.product-type.application";
 		};
-		627764461A5D1EBA004A9732 /* Bubbles CollectionTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 627764541A5D1EBA004A9732 /* Build configuration list for PBXNativeTarget "Bubbles CollectionTests" */;
-			buildPhases = (
-				627764431A5D1EBA004A9732 /* Sources */,
-				627764441A5D1EBA004A9732 /* Frameworks */,
-				627764451A5D1EBA004A9732 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				627764491A5D1EBA004A9732 /* PBXTargetDependency */,
-			);
-			name = "Bubbles CollectionTests";
-			productName = "Bubbles CollectionTests";
-			productReference = 627764471A5D1EBA004A9732 /* Bubbles CollectionTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -167,10 +109,6 @@
 				TargetAttributes = {
 					627764311A5D1EBA004A9732 = {
 						CreatedOnToolsVersion = 6.2;
-					};
-					627764461A5D1EBA004A9732 = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 627764311A5D1EBA004A9732;
 					};
 				};
 			};
@@ -188,7 +126,6 @@
 			projectRoot = "";
 			targets = (
 				627764311A5D1EBA004A9732 /* Bubbles Collection */,
-				627764461A5D1EBA004A9732 /* Bubbles CollectionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -201,13 +138,6 @@
 				6277643D1A5D1EBA004A9732 /* Main.storyboard in Resources */,
 				627764421A5D1EBA004A9732 /* LaunchScreen.xib in Resources */,
 				6277643F1A5D1EBA004A9732 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		627764451A5D1EBA004A9732 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,23 +155,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		627764431A5D1EBA004A9732 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6277644E1A5D1EBA004A9732 /* Bubbles_CollectionTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		627764491A5D1EBA004A9732 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 627764311A5D1EBA004A9732 /* Bubbles Collection */;
-			targetProxy = 627764481A5D1EBA004A9732 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6277643B1A5D1EBA004A9732 /* Main.storyboard */ = {
@@ -360,40 +274,6 @@
 			};
 			name = Release;
 		};
-		627764551A5D1EBA004A9732 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Bubbles CollectionTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bubbles Collection.app/Bubbles Collection";
-			};
-			name = Debug;
-		};
-		627764561A5D1EBA004A9732 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Bubbles CollectionTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bubbles Collection.app/Bubbles Collection";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,14 +293,7 @@
 				627764531A5D1EBA004A9732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		627764541A5D1EBA004A9732 /* Build configuration list for PBXNativeTarget "Bubbles CollectionTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				627764551A5D1EBA004A9732 /* Debug */,
-				627764561A5D1EBA004A9732 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
