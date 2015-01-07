@@ -14,6 +14,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet var collectionView: UICollectionView!
     
+    // MARK: Private
+    
+    private var count: Int = 5
+    
     // MARK: - Initialization
     
     required init(coder aDecoder: NSCoder) {
@@ -26,16 +30,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - Actions
+    
+    @IBAction func add(sender: AnyObject) {
+        count++
+        self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: count - 1, inSection: 0)])
     }
     
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -47,6 +53,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Add", forIndexPath: indexPath) as UICollectionReusableView
         return view
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        println("-- tapped indexPath \(indexPath.item)")
     }
 
 }
