@@ -103,7 +103,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
             if attributes == nil {
                 attributes = self.layoutAttributesForItemAtIndexPath(itemIndexPath)
             }
-            attributes?.alpha = 1.0
+            attributes?.alpha = 0.0
             attributes?.transform = CGAffineTransformMakeScale(0.001, 0.001)
             attributes?.center = calculateSupplementaryViewCenter()
         }
@@ -122,7 +122,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
             if attributes == nil {
                 attributes = self.layoutAttributesForItemAtIndexPath(itemIndexPath)
             }
-            attributes?.alpha = 1.0
+            attributes?.alpha = 0.0
             attributes?.transform = CGAffineTransformMakeScale(0.001, 0.001)
             attributes?.center = calculateSupplementaryViewCenter()
         }
