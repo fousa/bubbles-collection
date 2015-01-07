@@ -29,6 +29,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(red:0.19, green:0.3, blue:0.42, alpha:1)
+        
         collectionView.registerClass(BubbleAddReusableView.classForCoder(), forSupplementaryViewOfKind: BubblesCollectionViewLayoutBubbleAddKind, withReuseIdentifier: "Add")
         collectionView.registerClass(BubbleViewCell.classForCoder(), forCellWithReuseIdentifier: "Cell")
     }
@@ -62,6 +64,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         count--
         self.collectionView.deleteItemsAtIndexPaths([indexPath])
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 
 }

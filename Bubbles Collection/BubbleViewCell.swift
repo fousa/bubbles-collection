@@ -32,7 +32,7 @@ class BubbleViewCell: UICollectionViewCell {
     
     private func setupView() {
         let contentView = BubbleContentView(frame: self.bounds)
-        contentView.backgroundColor = UIColor.greenColor()
+        contentView.backgroundColor = UIColor(red:1, green:0.73, blue:0.17, alpha:1)
         contentView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
         self.contentView.addSubview(contentView)
     }

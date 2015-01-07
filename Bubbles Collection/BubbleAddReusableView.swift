@@ -35,7 +35,7 @@ class BubbleAddReusableView: UICollectionReusableView {
     }
     
     private func setupView() {
-        self.backgroundColor = UIColor.redColor()
+        self.backgroundColor = UIColor(red:0.5, green:0.62, blue:0.73, alpha:1)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: "add:")
         self.addGestureRecognizer(tapGesture)
