@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, BubbleAddReusableViewDelegate {
     
     // MARK: - Outlets
     
@@ -24,16 +24,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.init(coder: aDecoder)
     }
     
-    // MARK: - View Flow
-
+    // MARK: - View flow
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        collectionView.registerClass(BubbleAddReusableView.classForCoder(), forSupplementaryViewOfKind: BubblesCollectionViewLayoutBubbleAddKind, withReuseIdentifier: "Add")
     }
     
-    // MARK: - Actions
+    // MARK: - BubbleAddReusableViewDelegate
     
-    @IBAction func add(sender: AnyObject) {
+    func bubbleAddShouldAdd(reusableView: BubbleAddReusableView) {
         count++
         self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: count - 1, inSection: 0)])
     }
@@ -51,7 +52,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Add", forIndexPath: indexPath) as UICollectionReusableView
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "Add", forIndexPath: indexPath) as BubbleAddReusableView
+        view.delegate = self
         return view
     }
     
