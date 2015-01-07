@@ -14,7 +14,11 @@ protocol BubbleAddReusableViewDelegate {
 
 class BubbleAddReusableView: UICollectionReusableView {
     
-    // MARK: - Public
+    // MARK: - Privates
+    
+    private var highlighted = false
+    
+    // MARK: Public
     
     var delegate: BubbleAddReusableViewDelegate?
     
@@ -35,6 +39,35 @@ class BubbleAddReusableView: UICollectionReusableView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: "add:")
         self.addGestureRecognizer(tapGesture)
+    }
+    
+    // MARK: - Touches
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesBegan(touches, withEvent: event)
+        toggleTouchAnimation(highlighted: true)
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesEnded(touches, withEvent: event)
+        toggleTouchAnimation(highlighted: false)
+    }
+    
+    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+        super.touchesCancelled(touches, withEvent: event)
+        toggleTouchAnimation(highlighted: false)
+    }
+    
+    // MARK: - Animation
+    
+    private func toggleTouchAnimation(#highlighted: Bool) {
+        UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .CurveEaseInOut, animations: { () -> Void in
+            if (highlighted) {
+                self.transform = CGAffineTransformMakeScale(0.9, 0.9)
+            } else {
+                self.transform = CGAffineTransformIdentity
+            }
+        }, completion: nil)
     }
     
     // MARK: - Gestures

@@ -10,6 +10,8 @@ import UIKit
 
 class BubbleViewCell: UICollectionViewCell {
     
+    // MARK: - Observers
+    
     override var highlighted: Bool {
         didSet {
             toggleTouchAnimation()
