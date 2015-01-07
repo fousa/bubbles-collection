@@ -35,8 +35,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - BubbleAddReusableViewDelegate
     
     func bubbleAddShouldAdd(reusableView: BubbleAddReusableView) {
-        count++
-        self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: count - 1, inSection: 0)])
+        if count < 6 {
+            count++
+            self.collectionView.insertItemsAtIndexPaths([NSIndexPath(forItem: count - 1, inSection: 0)])
+        }
     }
     
     // MARK: - UICollectionView
