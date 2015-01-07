@@ -40,20 +40,9 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         attributes.size = calculateItemSize()
-        
-        let xRatio = cosf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
-        let x = CGFloat(center.x) + radius * CGFloat(xRatio)
-        let yRatio = sinf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
-        let y = CGFloat(center.y) + radius * CGFloat(yRatio)
-        attributes.center = CGPointMake(x, y)
+        attributes.center = calculateItemCenter(indexPath: indexPath)
         
         return attributes
-    }
-    
-    private func calculateItemSize() -> CGSize {
-        let collectionViewSize = self.collectionView?.frame.size ?? CGSizeZero
-        let size =  CGFloat(collectionViewSize.width / 4.0)
-        return CGSizeMake(size, size)
     }
     
     override func prepareForCollectionViewUpdates(updateItems: [AnyObject]!) {
@@ -109,7 +98,8 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
             if attributes == nil {
                 attributes = self.layoutAttributesForItemAtIndexPath(itemIndexPath)
             }
-            attributes?.alpha = 0.0
+            attributes?.alpha = 1.0
+            attributes?.transform = CGAffineTransformMakeScale(0.001, 0.001)
             attributes?.center = center
         }
         
@@ -123,11 +113,28 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
             if attributes == nil {
                 attributes = self.layoutAttributesForItemAtIndexPath(itemIndexPath)
             }
-            attributes?.alpha = 0.0
+            attributes?.alpha = 1.0
+            attributes?.transform = CGAffineTransformMakeScale(0.001, 0.001)
             attributes?.center = center
         }
 
         return attributes
+    }
+    
+    // MARK: - Calculations
+    
+    private func calculateItemCenter(#indexPath: NSIndexPath) -> CGPoint {
+        let xRatio = cosf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
+        let x = CGFloat(center.x) + radius * CGFloat(xRatio)
+        let yRatio = sinf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
+        let y = CGFloat(center.y) + radius * CGFloat(yRatio)
+        return CGPointMake(x, y)
+    }
+    
+    private func calculateItemSize() -> CGSize {
+        let collectionViewSize = self.collectionView?.frame.size ?? CGSizeZero
+        let size =  CGFloat(collectionViewSize.width / 4.0)
+        return CGSizeMake(size, size)
     }
     
 }
