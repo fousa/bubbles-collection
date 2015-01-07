@@ -8,7 +8,7 @@
 
 import UIKit
 
-let BubblesCollectionViewLayoutBubbleSize: CGFloat = 50.0
+let BubblesCollectionViewLayoutBubbleAddSize: CGFloat = 60.0
 let BubblesCollectionViewLayoutBubbleAddKind = "Add"
 
 class BubblesCollectionViewLayout: UICollectionViewLayout {
@@ -29,7 +29,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
         
         let size = self.collectionView?.frame.size ?? CGSizeZero
         center = CGPointMake(size.width / 2.0, size.height / 2.0)
-        radius = min(size.width, size.height) / 2.5
+        radius = min(size.width, size.height) / 3.0
         count = self.collectionView?.numberOfItemsInSection(0) ?? 0
     }
     
@@ -39,7 +39,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-        attributes.size = CGSizeMake(BubblesCollectionViewLayoutBubbleSize, BubblesCollectionViewLayoutBubbleSize)
+        attributes.size = calculateItemSize()
         
         let xRatio = cosf(Float(2.0 * CGFloat(indexPath.item) * CGFloat(M_PI) / CGFloat(count)))
         let x = CGFloat(center.x) + radius * CGFloat(xRatio)
@@ -48,6 +48,12 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
         attributes.center = CGPointMake(x, y)
         
         return attributes
+    }
+    
+    private func calculateItemSize() -> CGSize {
+        let collectionViewSize = self.collectionView?.frame.size ?? CGSizeZero
+        let size =  CGFloat(collectionViewSize.width / 4.0)
+        return CGSizeMake(size, size)
     }
     
     override func prepareForCollectionViewUpdates(updateItems: [AnyObject]!) {
@@ -75,14 +81,14 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
+        // Add supplementary add bubble.
+        layoutAttributes.append(self.layoutAttributesForSupplementaryViewOfKind(BubblesCollectionViewLayoutBubbleAddKind, atIndexPath: NSIndexPath(forItem: count, inSection: 0)))
+        
         // Add team bubbles.
         for index in 0..<count {
             let indexPath = NSIndexPath(forItem: index, inSection: 0)
             layoutAttributes.append(self.layoutAttributesForItemAtIndexPath(indexPath))
         }
-        
-        // Add supplementary add bubble.
-        layoutAttributes.append(self.layoutAttributesForSupplementaryViewOfKind(BubblesCollectionViewLayoutBubbleAddKind, atIndexPath: NSIndexPath(forItem: count, inSection: 0)))
         
         return layoutAttributes
     }
@@ -90,7 +96,7 @@ class BubblesCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         var attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
         
-        attributes.size = CGSizeMake(BubblesCollectionViewLayoutBubbleSize, BubblesCollectionViewLayoutBubbleSize)
+        attributes.size = CGSizeMake(BubblesCollectionViewLayoutBubbleAddSize, BubblesCollectionViewLayoutBubbleAddSize)
         attributes.center = center
         
         return attributes
